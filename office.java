@@ -6,5 +6,6 @@ public class office {
     {
         System.out.println("Office");
         System.out.println("New");
+        System.out.println("New");
     }
 }
