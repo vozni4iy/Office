@@ -23,7 +23,7 @@ public class Person {
         this.is_manager = false;
         this.is_programmer = false;
         this.is_tester = false;
-        createSchedule();
+        this.schedule = createSchedule();
     }
 
     public Person (int id, boolean is_director, boolean is_accountant, boolean is_cleaner, boolean is_designer,
@@ -37,7 +37,7 @@ public class Person {
         this.is_manager = is_manager;
         this.is_programmer = is_programmer;
         this.is_tester = is_tester;
-        createSchedule();
+        this.schedule = createSchedule();
     }
 
     public void setIs_director(boolean is_director) {
@@ -107,10 +107,55 @@ public class Person {
 
     private boolean[][] createSchedule()
     {
-        boolean [] [] schedule = new boolean[6][11];
+        boolean flag = true;
+        boolean[][] schedule = new boolean[7][12];
         int daylimit = 8;
         int limit = 40;
+        int dhours = 0, whours = 0;
+        int rnd;
+        while (flag) {
+            schedule = new boolean[7][12];
+            for (int i = 0; i < 7; i++)
+            {
+                dhours = 0;
+                for (int j = 0; j < 12; j++)
+                {
+                   rnd = (int) (Math.random()*2);
+                   if (rnd > 0)
+                   {
+                       schedule[i][j] = true;
+                       dhours++;
+                       whours++;
+                   }
+                    if (dhours==daylimit) break;
+                    if (whours == limit) break;
+                }
+
+                if (whours == limit) break;
+
+            }
+            System.out.println(whours);
+            if (whours == limit) {
+                flag = false;
+
+            } else
+            {
+                whours = 0;
+            }
+
+        }
         return schedule;
+    }
+
+    public void printSchedule()
+    {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 12; j++) {
+                System.out.print(schedule[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     public boolean[][] getSchedule() {

@@ -15,9 +15,10 @@ public class office {
         Person person;
         List<Person> staff = new ArrayList<Person>();
         quan = (int) (Math.random() * 91) + 10;
-        System.out.println(quan);
+        System.out.println("Количество сотрудников: " + quan);
         person = new Person(1,true,false,false,false,false,false,false);
         staff.add(person);
+        person.printSchedule();
         person = new Person(2,false,true,false,false,false,false,false);
         staff.add(person);
         person = new Person(3,false,false,false,false,true,false,false);
