@@ -11,6 +11,7 @@ public class Person {
     private boolean is_programmer;
     private boolean is_designer;
     private boolean is_cleaner;
+    private boolean [][] schedule;
 
     public Person (int id)
     {
@@ -22,6 +23,7 @@ public class Person {
         this.is_manager = false;
         this.is_programmer = false;
         this.is_tester = false;
+        createSchedule();
     }
 
     public Person (int id, boolean is_director, boolean is_accountant, boolean is_cleaner, boolean is_designer,
@@ -35,6 +37,7 @@ public class Person {
         this.is_manager = is_manager;
         this.is_programmer = is_programmer;
         this.is_tester = is_tester;
+        createSchedule();
     }
 
     public void setIs_director(boolean is_director) {
@@ -100,5 +103,17 @@ public class Person {
 
     public boolean is_cleaner() {
         return is_cleaner;
+    }
+
+    private boolean[][] createSchedule()
+    {
+        boolean [] [] schedule = new boolean[6][11];
+        int daylimit = 8;
+        int limit = 40;
+        return schedule;
+    }
+
+    public boolean[][] getSchedule() {
+        return schedule;
     }
 }

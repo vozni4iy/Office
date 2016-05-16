@@ -5,6 +5,9 @@ import java.util.List;
  * Created by Admin on 13.05.2016.
  */
 public class office {
+
+
+
     public static void main (String [] args)
     {
         System.out.println("Office");
@@ -62,6 +65,7 @@ public class office {
             System.out.println();
 
         }
+
 
         System.out.println();
         System.out.println("Всего сотрудников: " + staff.size());
