@@ -134,7 +134,7 @@ public class Person {
                 if (whours == limit) break;
 
             }
-            System.out.println(whours);
+            //System.out.println(whours);
             if (whours == limit) {
                 flag = false;
 

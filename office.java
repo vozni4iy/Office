@@ -6,14 +6,22 @@ import java.util.List;
  */
 public class office {
 
-
+    static List<Person> staff = new ArrayList<Person>();
+    static List<Director> dirlist = new ArrayList<>();
+    static List<Accountant> acclist = new ArrayList<>();
+    static List<Cleaner> clelist = new ArrayList<>();
+    static List<Designer> deslist = new ArrayList<>();
+    static List<Manager> manlist = new ArrayList<>();
+    static List<Programmer> proglist = new ArrayList<>();
+    static List<Tester> testlist = new ArrayList<>();
 
     public static void main (String [] args)
     {
         System.out.println("Office");
         int quan;
         Person person;
-        List<Person> staff = new ArrayList<Person>();
+
+
         quan = (int) (Math.random() * 91) + 10;
         System.out.println("Количество сотрудников: " + quan);
         person = new Person(1,true,false,false,false,false,false,false);
@@ -27,6 +35,7 @@ public class office {
         staff.add(person);
         staff = createRndStaff(staff, quan, 5);
         printStaff(staff);
+        createDirList(staff);
     }
 
     public static void printStaff (List<Person> staff)
@@ -98,5 +107,23 @@ public class office {
             staff.add(person);
         }
         return staff;
+    }
+
+    private static List<Director> createDirList(List <Person> staff)
+    {
+        List <Director> dirlist = new ArrayList<>();
+        Director director;
+        System.out.print("Директора: ");
+        for (Person person : staff)
+        {
+            if (person.is_director())
+            {
+                director = new Director(person.getId());
+                dirlist.add(director);
+                System.out.print(person.getId() + " ");
+            }
+        }
+        System.out.println();
+        return dirlist;
     }
 }
