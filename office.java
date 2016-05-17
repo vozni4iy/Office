@@ -6,14 +6,14 @@ import java.util.List;
  */
 public class office {
 
-    static List<Person> staff = new ArrayList<Person>();
-    static List<Director> dirlist = new ArrayList<>();
-    static List<Accountant> acclist = new ArrayList<>();
-    static List<Cleaner> clelist = new ArrayList<>();
-    static List<Designer> deslist = new ArrayList<>();
-    static List<Manager> manlist = new ArrayList<>();
-    static List<Programmer> proglist = new ArrayList<>();
-    static List<Tester> testlist = new ArrayList<>();
+    private static List<Person> staff = new ArrayList<Person>();
+    private static List<Director> dirlist = new ArrayList<>();
+    private static List<Accountant> acclist = new ArrayList<>();
+    private static List<Cleaner> clelist = new ArrayList<>();
+    private static List<Designer> deslist = new ArrayList<>();
+    private static List<Manager> manlist = new ArrayList<>();
+    private static List<Programmer> proglist = new ArrayList<>();
+    private static List<Tester> testlist = new ArrayList<>();
 
     public static void main (String [] args)
     {
@@ -35,7 +35,13 @@ public class office {
         staff.add(person);
         staff = createRndStaff(staff, quan, 5);
         printStaff(staff);
-        createDirList(staff);
+        dirlist = createDirList(staff);
+        acclist = createAccList(staff);
+        clelist = createCleList(staff);
+        deslist = createDesList(staff);
+        manlist = createManList(staff);
+        proglist = createProgList(staff);
+        testlist = createTestList(staff);
     }
 
     public static void printStaff (List<Person> staff)
@@ -125,5 +131,145 @@ public class office {
         }
         System.out.println();
         return dirlist;
+    }
+
+    private static List<Accountant> createAccList(List <Person> staff)
+    {
+        List <Accountant> acclist = new ArrayList<>();
+        Accountant accountant;
+        System.out.print("Бухгалтера: ");
+        for (Person person : staff)
+        {
+            if (person.is_accountant())
+            {
+                accountant = new Accountant(person.getId());
+                acclist.add(accountant);
+                System.out.print(person.getId() + " ");
+            }
+        }
+        System.out.println();
+        return acclist;
+    }
+
+    private static List<Cleaner> createCleList(List <Person> staff)
+    {
+        List <Cleaner> clelist = new ArrayList<>();
+        Cleaner cleaner;
+        System.out.print("Уборщики: ");
+        for (Person person : staff)
+        {
+            if (person.is_cleaner())
+            {
+                cleaner = new Cleaner(person.getId());
+                clelist.add(cleaner);
+                System.out.print(person.getId() + " ");
+            }
+        }
+        System.out.println();
+        return clelist;
+    }
+
+    private static List<Designer> createDesList(List <Person> staff)
+    {
+        List <Designer> deslist = new ArrayList<>();
+        Designer designer;
+        System.out.print("Дизайнеры: ");
+        for (Person person : staff)
+        {
+            if (person.is_designer())
+            {
+                designer = new Designer(person.getId());
+                deslist.add(designer);
+                System.out.print(person.getId() + " ");
+            }
+        }
+        System.out.println();
+        return deslist;
+    }
+
+    private static List<Manager> createManList(List <Person> staff)
+    {
+        List <Manager> manlist = new ArrayList<>();
+        Manager manager;
+        System.out.print("Менеджеры: ");
+        for (Person person : staff)
+        {
+            if (person.is_manager())
+            {
+                manager = new Manager(person.getId());
+                manlist.add(manager);
+                System.out.print(person.getId() + " ");
+            }
+        }
+        System.out.println();
+        return manlist;
+    }
+
+    private static List<Programmer> createProgList(List <Person> staff)
+    {
+        List <Programmer> proglist = new ArrayList<>();
+        Programmer programmer;
+        System.out.print("Программисты: ");
+        for (Person person : staff)
+        {
+            if (person.is_programmer())
+            {
+                programmer = new Programmer(person.getId());
+                proglist.add(programmer);
+                System.out.print(person.getId() + " ");
+            }
+        }
+        System.out.println();
+        return proglist;
+    }
+
+    private static List<Tester> createTestList(List <Person> staff)
+    {
+        List <Tester> testlist = new ArrayList<>();
+        Tester tester;
+        System.out.print("Тестировщики: ");
+        for (Person person : staff)
+        {
+            if (person.is_tester())
+            {
+                tester = new Tester(person.getId());
+                testlist.add(tester);
+                System.out.print(person.getId() + " ");
+            }
+        }
+        System.out.println();
+        return testlist;
+    }
+
+    public static List<Director> getDirlist() {
+        return dirlist;
+    }
+
+    public static List<Accountant> getAcclist() {
+        return acclist;
+    }
+
+    public static List<Cleaner> getClelist() {
+        return clelist;
+    }
+
+    public static List<Designer> getDeslist() {
+        return deslist;
+    }
+
+    public static List<Manager> getManlist() {
+        return manlist;
+    }
+
+    public static List<Programmer> getProglist() {
+        return proglist;
+    }
+
+    public static List<Tester> getTestlist() {
+        return testlist;
+    }
+
+    public static List<Person> getStaff() {
+        return staff;
     }
 }
