@@ -25,4 +25,9 @@ public class Manager extends Person{
     {
         super.printSchedule(schedule);
     }
+
+    public void sellProduct ()
+    {
+        System.out.println("Продаю товар");
+    }
 }

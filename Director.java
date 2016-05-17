@@ -25,4 +25,9 @@ public class Director extends Person{
     {
         super.printSchedule(schedule);
     }
+
+    public void giveTasks ()
+    {
+        System.out.println("Даю задания");
+    }
 }

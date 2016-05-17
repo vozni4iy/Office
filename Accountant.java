@@ -25,4 +25,9 @@ public class Accountant extends Person{
     {
         super.printSchedule(schedule);
     }
+
+    public void makeReport()
+    {
+        System.out.println("Составляю отчетность");
+    }
 }

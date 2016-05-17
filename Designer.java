@@ -25,4 +25,9 @@ public class Designer extends Person{
     {
         super.printSchedule(schedule);
     }
+
+    public void drawLayout ()
+    {
+        System.out.println("Рисую макет");
+    }
 }

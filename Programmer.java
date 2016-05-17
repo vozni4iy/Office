@@ -25,4 +25,9 @@ public class Programmer extends Person{
     {
         super.printSchedule(schedule);
     }
+
+    public void writeCode ()
+    {
+        System.out.println("Пишу код");
+    }
 }
