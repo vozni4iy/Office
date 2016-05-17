@@ -42,6 +42,8 @@ public class office {
         manlist = createManList(staff);
         proglist = createProgList(staff);
         testlist = createTestList(staff);
+        WorkDay day = new WorkDay(1);
+        day.work();
     }
 
     public static void printStaff (List<Person> staff)
