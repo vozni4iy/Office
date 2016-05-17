@@ -19,22 +19,35 @@ public class office {
     {
         System.out.println("Office");
         int quan;
-        Person person;
-
-
         quan = (int) (Math.random() * 91) + 10;
         System.out.println("Количество сотрудников: " + quan);
+        basicInit();
+        staff = createRndStaff(staff, quan, 5);
+        printStaff(staff);
+        createProfLists();
+        System.out.println();
+        //dirlist.get(0).printSchedule();
+        System.out.println();
+        WorkDay day = new WorkDay(1);
+        day.work();
+    }
+
+    public static void basicInit()
+    {
+        Person person;
         person = new Person(1,true,false,false,false,false,false,false);
         staff.add(person);
-        person.printSchedule();
+        //person.printSchedule();
         person = new Person(2,false,true,false,false,false,false,false);
         staff.add(person);
         person = new Person(3,false,false,false,false,true,false,false);
         staff.add(person);
         person = new Person(4,false,false,true,false,false,false,false);
         staff.add(person);
-        staff = createRndStaff(staff, quan, 5);
-        printStaff(staff);
+    }
+
+    public static void createProfLists()
+    {
         dirlist = createDirList(staff);
         acclist = createAccList(staff);
         clelist = createCleList(staff);
@@ -42,8 +55,6 @@ public class office {
         manlist = createManList(staff);
         proglist = createProgList(staff);
         testlist = createTestList(staff);
-        WorkDay day = new WorkDay(1);
-        day.work();
     }
 
     public static void printStaff (List<Person> staff)

@@ -13,6 +13,11 @@ public class Person {
     private boolean is_cleaner;
     private boolean [][] schedule;
 
+    public Person()
+    {
+
+    }
+
     public Person (int id)
     {
         this.id = id;
@@ -147,15 +152,21 @@ public class Person {
         return schedule;
     }
 
-    public void printSchedule()
+
+    public void printSchedule(boolean [][] sc)
     {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 12; j++) {
-                System.out.print(schedule[i][j] + " ");
+                System.out.print(sc[i][j] + " ");
             }
             System.out.println();
         }
         System.out.println();
+    }
+
+    public void printSchedule()
+    {
+        printSchedule(schedule);
     }
 
     public boolean[][] getSchedule() {
