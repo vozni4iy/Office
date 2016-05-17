@@ -67,4 +67,32 @@ public class WorkDay {
             dayoff = " будний день.";
         }
     }
+
+    private Task chooseTask (int type, List <Task> tasklist)
+    {
+        Task task = null;
+        int priority = 0;
+        int value = 0;
+        for (Task t : tasklist)
+        {
+            if (t.getType() == type)
+            {
+                if (t.getPriority() > priority)
+                {
+                    task = t;
+                    priority = t.getPriority();
+                    value = t.getValue();
+                } else if (t.getPriority() == priority)
+                {
+                    if (t.getValue() > value)
+                    {
+                        task = t;
+                        priority = t.getPriority();
+                        value = t.getValue();
+                    }
+                }
+            }
+        }
+        return task;
+    }
 }
