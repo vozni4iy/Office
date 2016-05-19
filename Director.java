@@ -36,7 +36,7 @@ public class Director extends Person{
 
     public Task giveTask ()
     {
-        System.out.println("Даю задание");
+        //System.out.println("Даю задание");
         int type = (int) (Math.random()*6) + 1;
         int hours = (int) (Math.random()*2) + 1;
         int priority = (int) (Math.random()*10) + 1;
