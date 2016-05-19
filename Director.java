@@ -37,7 +37,8 @@ public class Director extends Person{
     public Task giveTask ()
     {
         //System.out.println("Даю задание");
-        int type = (int) (Math.random()*6) + 1;
+        //int type = (int) (Math.random()*6) + 1;
+        int type = rndType();
         int hours = (int) (Math.random()*2) + 1;
         int priority = (int) (Math.random()*10) + 1;
         int value = getValue(type);
@@ -70,5 +71,18 @@ public class Director extends Person{
                 break;
         }
         return res;
+    }
+
+    private int rndType()
+    {
+        int rnd = (int) (Math.random()*10);
+        int type = 1;
+        if (rnd == 0) type = 1;
+        if (rnd == 1) type = 2;
+        if ((rnd == 2) || (rnd == 3)) type = 3;
+        if ((rnd == 4) || (rnd == 5)) type = 4;
+        if ((rnd == 6) || (rnd == 7)) type = 5;
+        if ((rnd == 8) || (rnd == 9)) type = 6;
+        return type;
     }
 }

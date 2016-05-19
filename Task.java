@@ -8,7 +8,7 @@ public class Task {
     private int priority;
     private int value;
     private int num;
-    private static int number = 0;
+    protected static int number = 0;
 
     public Task(int type, int hours, int priority, int value) {
         this.type = type;
@@ -69,6 +69,8 @@ public class Task {
         }
         return res;
     }
+
+
 
     @Override
     public String toString() {

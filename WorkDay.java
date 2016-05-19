@@ -41,7 +41,7 @@ public class WorkDay {
             maxtasks = 2;
         }
         int w = (number % 7) - 1;
-        if (w == -1) w=7;
+        if (w == -1) w=6;
 
         //дневной цикл
         for (int h = 0; h < 12; h++) {
@@ -64,6 +64,20 @@ public class WorkDay {
                 // сделать ежедневный отчет и выдать зарплату фрилансерам
                 Task freeTask = new Task(1, 1, 10, 500);
                 tasklist.add(freeTask);
+            }
+
+            if ((h == 11) && (w == 6))
+            {
+                // еженедельная выдача зарплаты сотрудникам
+                Task weekTask = new Task(1, 1, 10, 500);
+                tasklist.add(weekTask);
+            }
+
+            if (number == 31)
+            {
+                // ежемесячный отчет
+                Task mTask = new Task(1, 2, 10, 1000);
+                tasklist.add(mTask);
             }
             System.out.println("Всего заданий на данный момент: " + tasklist.size());
             System.out.println();
@@ -117,10 +131,10 @@ public class WorkDay {
 
             }
             System.out.println();
-            /*System.out.println("Всего выполнено заданий: " + complist.size());
+            System.out.println("Всего выполнено заданий: " + complist.size());
             for (CompleteTask ctask : complist) {
                 System.out.println(ctask);
-            }*/
+            }
 
         }
 
@@ -139,6 +153,7 @@ public class WorkDay {
                     {
                        lancer.work(task, complist, is_dayoff);
                        completed = true;
+                       break;
                     }
 
                 }
@@ -148,6 +163,7 @@ public class WorkDay {
                     Freelancer lancer = new Freelancer(Freelancer.getFreeid(), task.getType());
                     freelist.add(lancer);
                     lancer.work(task, complist, is_dayoff);
+
                 }
                 tasklist.remove(task);
 
@@ -169,6 +185,7 @@ public class WorkDay {
             System.out.println(ctask);
         }
         completeList.addAll(complist);
+        tasklist = new ArrayList<>(); //офис и так убирают каждый день
         System.out.println();
     }
 
@@ -221,5 +238,13 @@ public class WorkDay {
         if (person.is_programmer() && (type == 5)) res = true;
         if (person.is_tester() && (type == 6)) res = true;
         return res;
+    }
+
+    public static List<Freelancer> getFreelist() {
+        return freelist;
+    }
+
+    public static List<CompleteTask> getCompleteList() {
+        return completeList;
     }
 }

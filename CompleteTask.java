@@ -14,6 +14,7 @@ public class CompleteTask extends Task {
     public CompleteTask (Task task, Person person, boolean is_dayoff)
     {
         super(person.getId(), task.getHours(), task.getPriority(), task.getValue());
+        Task.number--;
         this.type = task.getType();
         this.hours = task.getHours();
         this.priority = task.getPriority();

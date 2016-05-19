@@ -72,5 +72,17 @@ public class Freelancer extends Person {
         return freeid;
     }
 
+    @Override
+    public void setIs_busy(boolean is_busy) {
+        this.is_busy = is_busy;
+    }
 
+    @Override
+    public String toString() {
+        return "Freelancer{" +
+                "id=" + id +
+                ", prof=" + prof +
+                ", is_busy=" + is_busy +
+                '}';
+    }
 }

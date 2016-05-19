@@ -29,8 +29,14 @@ public class office {
         System.out.println();
         //dirlist.get(0).printSchedule();
         System.out.println();
-        WorkDay day = new WorkDay(1);
-        day.work();
+        for (int i = 1; i <= 31; i++) {
+            WorkDay day = new WorkDay(i);
+            day.work();
+        }
+
+        List <CompleteTask> clist = WorkDay.getCompleteList();
+
+        System.out.println("Всего выполнено заданий за месяц: " + clist.size());
     }
 
     public static void basicInit()
