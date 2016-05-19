@@ -20,6 +20,7 @@ public class WorkDay {
     private static List<Tester> testlist = office.getTestlist();
     private static List <Task> tasklist = new ArrayList<>();
     private static List <CompleteTask> completeList = new ArrayList<>();
+    private static List <Freelancer> freelist = new ArrayList<>();
     private List <CompleteTask> complist;
 
     public WorkDay (int number)
@@ -42,7 +43,7 @@ public class WorkDay {
         int w = (number % 7) - 1;
         if (w == -1) w=7;
 
-        //часовые циклы
+        //дневной цикл
         for (int h = 0; h < 12; h++) {
             System.out.println();
             int time = h + 8;
@@ -56,6 +57,13 @@ public class WorkDay {
                         tasklist.add(director.giveTask());
                     }
                 }
+            }
+
+            if (h == 11)
+            {
+                // сделать ежедневный отчет и выдать зарплату фрилансерам
+                Task freeTask = new Task(1, 1, 10, 500);
+                tasklist.add(freeTask);
             }
             System.out.println("Всего заданий на данный момент: " + tasklist.size());
             System.out.println();
@@ -109,13 +117,59 @@ public class WorkDay {
 
             }
             System.out.println();
-            System.out.println("Всего выполнено заданий: " + complist.size());
+            /*System.out.println("Всего выполнено заданий: " + complist.size());
             for (CompleteTask ctask : complist) {
                 System.out.println(ctask);
-            }
-            completeList.addAll(complist);
-            System.out.println();
+            }*/
+
         }
+
+        //конец дневного цикла
+        System.out.println();
+        System.out.println("Передача работы фрилансерам: ");
+        List <Task> copy = new ArrayList<>(tasklist);
+        for (Task task : copy)
+        {
+            boolean completed = false;
+            if (task.getType() != 2)
+            {
+                for (Freelancer lancer : freelist)
+                {
+                    if ((task.getType() == lancer.getProf()) && (!lancer.is_busy()))
+                    {
+                       lancer.work(task, complist, is_dayoff);
+                       completed = true;
+                    }
+
+                }
+
+                if (!completed)
+                {
+                    Freelancer lancer = new Freelancer(Freelancer.getFreeid(), task.getType());
+                    freelist.add(lancer);
+                    lancer.work(task, complist, is_dayoff);
+                }
+                tasklist.remove(task);
+
+            }
+        }
+        for (Freelancer lancer : freelist)
+        {
+            lancer.setIs_busy(false);
+        }
+        System.out.println();
+        System.out.println("Невыполненные задачи: ");
+        for (Task task : tasklist)
+        {
+            System.out.println(task);
+        }
+        System.out.println();
+        System.out.println("Всего выполнено заданий: " + complist.size());
+        for (CompleteTask ctask : complist) {
+            System.out.println(ctask);
+        }
+        completeList.addAll(complist);
+        System.out.println();
     }
 
     private void getData()

@@ -21,7 +21,7 @@ public class CompleteTask extends Task {
         this.id = person.getId();
         int mult = 1;
         if (is_dayoff) mult = 2;
-        this.payment = TaskNames.values()[task.getType()-1].getPayment();
+        this.payment = mult*hours*TaskNames.values()[task.getType()-1].getPayment();
     }
 
     @Override
