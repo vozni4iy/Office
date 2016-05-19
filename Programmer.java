@@ -26,8 +26,8 @@ public class Programmer extends Person{
         super.printSchedule(schedule);
     }
 
-    public void writeCode ()
+    public void writeCode (Task task)
     {
-        System.out.println("Пишу код");
+        System.out.println("Пишу код, задача номер " + task.getNum());
     }
 }

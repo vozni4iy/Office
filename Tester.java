@@ -26,8 +26,8 @@ public class Tester extends Person{
         super.printSchedule(schedule);
     }
 
-    public void testProgramm ()
+    public void testProgramm (Task task)
     {
-        System.out.println("Тестирую программу");
+        System.out.println("Тестирую программу, задача номер " + task.getNum());
     }
 }

@@ -27,6 +27,7 @@ public class WorkDay {
 
     public void work()
     {
+
         getData();
         System.out.println("Сегодня " + name + ", " + number + " марта, " + dayoff);
         System.out.println("Работа пошла! ");
@@ -52,6 +53,75 @@ public class WorkDay {
         {
             System.out.println(task);
         }
+        System.out.println();
+
+        for (Person person : staff)
+        {
+            if ((person.getSchedule()[0][0]) && (!person.is_busy()))
+            {
+                Task task = chooseTask(tasklist, person);
+                if (task != null) {
+                    person.work(task);
+                    person.setIs_busy(true);
+                    tasklist.remove(task);
+                }
+            }
+        }
+
+        /*for (Accountant accountant : acclist)
+        {
+            if (accountant.getSchedule()[0][0])
+            {
+               Task task = chooseTask(1, tasklist);
+               accountant.makeReport(task);
+               staff.get(accountant.getId() - 1).setIs_busy(true);
+            }
+        }
+
+        for (Cleaner cleaner : clelist)
+        {
+            if (cleaner.getSchedule()[0][0])
+            {
+                Task task = chooseTask(2, tasklist);
+                cleaner.cleanOffice(task);
+            }
+        }
+
+        for (Designer designer : deslist)
+        {
+            if (designer.getSchedule()[0][0])
+            {
+                Task task = chooseTask(3, tasklist);
+                designer.drawLayout(task);
+            }
+        }
+
+        for (Manager manager : manlist)
+        {
+            if (manager.getSchedule()[0][0])
+            {
+                Task task = chooseTask(4, tasklist);
+                manager.sellProduct(task);
+            }
+        }
+
+        for (Programmer programmer : proglist)
+        {
+            if (programmer.getSchedule()[0][0])
+            {
+                Task task = chooseTask(1, tasklist);
+                programmer.writeCode(task);
+            }
+        }
+
+        for (Tester tester : testlist)
+        {
+            if (tester.getSchedule()[0][0])
+            {
+                Task task = chooseTask(1, tasklist);
+                tester.testProgramm(task);
+            }
+        }*/
     }
 
     private void getData()
@@ -68,31 +138,40 @@ public class WorkDay {
         }
     }
 
-    private Task chooseTask (int type, List <Task> tasklist)
+    private Task chooseTask (List <Task> tasklist, Person person)
     {
         Task task = null;
         int priority = 0;
         int value = 0;
         for (Task t : tasklist)
         {
-            if (t.getType() == type)
-            {
-                if (t.getPriority() > priority)
-                {
+            if (eqtype(t.getType(), person)) {
+                if (t.getPriority() > priority) {
                     task = t;
                     priority = t.getPriority();
                     value = t.getValue();
-                } else if (t.getPriority() == priority)
-                {
-                    if (t.getValue() > value)
-                    {
+                } else if (t.getPriority() == priority) {
+                    if (t.getValue() > value) {
                         task = t;
                         priority = t.getPriority();
                         value = t.getValue();
                     }
                 }
             }
+
         }
         return task;
+    }
+
+    private boolean eqtype (int type, Person person)
+    {
+        boolean res = false;
+        if (person.is_accountant() && (type == 1)) res = true;
+        if (person.is_cleaner() && (type == 2)) res = true;
+        if (person.is_designer() && (type == 3)) res = true;
+        if (person.is_manager() && (type == 4)) res = true;
+        if (person.is_programmer() && (type == 5)) res = true;
+        if (person.is_tester() && (type == 6)) res = true;
+        return res;
     }
 }

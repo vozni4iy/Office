@@ -26,8 +26,8 @@ public class Designer extends Person{
         super.printSchedule(schedule);
     }
 
-    public void drawLayout ()
+    public void drawLayout (Task task)
     {
-        System.out.println("Рисую макет");
+        System.out.println("Рисую макет, задача номер " + task.getNum());
     }
 }

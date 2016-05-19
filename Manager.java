@@ -26,8 +26,8 @@ public class Manager extends Person{
         super.printSchedule(schedule);
     }
 
-    public void sellProduct ()
+    public void sellProduct (Task task)
     {
-        System.out.println("Продаю товар");
+        System.out.println("Продаю услуги, задача номер " + task.getNum());
     }
 }

@@ -11,6 +11,7 @@ public class Person {
     private boolean is_programmer;
     private boolean is_designer;
     private boolean is_cleaner;
+    private boolean is_busy;
     private boolean [][] schedule;
 
     public Person()
@@ -28,6 +29,7 @@ public class Person {
         this.is_manager = false;
         this.is_programmer = false;
         this.is_tester = false;
+        this.is_busy = false;
         this.schedule = createSchedule();
     }
 
@@ -42,6 +44,7 @@ public class Person {
         this.is_manager = is_manager;
         this.is_programmer = is_programmer;
         this.is_tester = is_tester;
+        this.is_busy = false;
         this.schedule = createSchedule();
     }
 
@@ -73,9 +76,9 @@ public class Person {
         this.is_cleaner = is_cleaner;
     }
 
-
-
-
+    public void setIs_busy(boolean is_busy) {
+        this.is_busy = is_busy;
+    }
 
     public int getId ()
     {
@@ -108,6 +111,10 @@ public class Person {
 
     public boolean is_cleaner() {
         return is_cleaner;
+    }
+
+    public boolean is_busy() {
+        return is_busy;
     }
 
     private boolean[][] createSchedule()
@@ -171,5 +178,11 @@ public class Person {
 
     public boolean[][] getSchedule() {
         return schedule;
+    }
+
+    public void work(Task task)
+    {
+        System.out.println("Сотрудник № " + id +" приступил к задаче № " + task.getNum() + " ," +
+        TaskNames.values()[task.getType()-1].getName());
     }
 }

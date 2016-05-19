@@ -7,12 +7,16 @@ public class Task {
     private int hours;
     private int priority;
     private int value;
+    private int num;
+    private static int number = 0;
 
     public Task(int type, int hours, int priority, int value) {
         this.type = type;
         this.hours = hours;
         this.priority = priority;
         this.value = value;
+        number++;
+        this.num = number;
     }
 
     public int getType() {
@@ -29,6 +33,14 @@ public class Task {
 
     public int getValue() {
         return value;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public static int getNumber() {
+        return number;
     }
 
     private String strtype(int type)
@@ -60,7 +72,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "Task № " + num + " {" +
                 "type=" + strtype(type) +
                 ", hours=" + hours +
                 ", priority=" + priority +

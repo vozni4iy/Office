@@ -26,8 +26,8 @@ public class Cleaner extends Person{
         super.printSchedule(schedule);
     }
 
-    public void cleanOffice()
+    public void cleanOffice(Task task)
     {
-        System.out.println("Выполняю уборку в офисе");
+        System.out.println("Выполняю уборку в офисе, задача номер " + task.getNum());
     }
 }
