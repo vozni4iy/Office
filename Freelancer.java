@@ -19,11 +19,11 @@ public class Freelancer extends Person {
         System.out.println("Знакомьтесь! Новый фрилансер, сотрудник под № " + id + ", " + strProf());
     }
 
-    public void work (Task task, List<CompleteTask> clist, boolean is_dayoff)
+    public void work (Task task, List<CompleteTask> clist, int num)
     {
         System.out.println("Фрилансер № " + id + " выполнил задачу № " + task.getNum() + " ," +
                 TaskNames.values()[task.getType()-1].getName());
-        clist.add(new CompleteTask(task, this, is_dayoff));
+        clist.add(new CompleteTask(task, this, num));
         this.is_busy = true;
     }
 

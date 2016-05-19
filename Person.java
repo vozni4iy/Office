@@ -207,11 +207,11 @@ public class Person {
         status = status - 1;
     }
 
-    public void endWork(Task task, List <CompleteTask> clist, boolean is_dayoff)
+    public void endWork(Task task, List <CompleteTask> clist, int num)
     {
         System.out.println("Сотрудник № " + this.getId() +" выполнил задачу № " + task.getNum() + " ," +
                 TaskNames.values()[task.getType()-1].getName());
-        clist.add(new CompleteTask(task, this, is_dayoff));
+        clist.add(new CompleteTask(task, this, num));
         this.curTask = null;
         this.is_busy = false;
     }

@@ -118,7 +118,7 @@ public class WorkDay {
 
                 if ((person.getCurTask() != null) && (person.getSchedule()[w][h])) {
                     if (person.getStatus() == 0) {
-                        person.endWork(person.getCurTask(), complist, is_dayoff);
+                        person.endWork(person.getCurTask(), complist, number);
                     } else {
                         person.continueWorking(person.getCurTask());
                     }
@@ -151,7 +151,7 @@ public class WorkDay {
                 {
                     if ((task.getType() == lancer.getProf()) && (!lancer.is_busy()))
                     {
-                       lancer.work(task, complist, is_dayoff);
+                       lancer.work(task, complist, number);
                        completed = true;
                        break;
                     }
@@ -162,7 +162,7 @@ public class WorkDay {
                 {
                     Freelancer lancer = new Freelancer(Freelancer.getFreeid(), task.getType());
                     freelist.add(lancer);
-                    lancer.work(task, complist, is_dayoff);
+                    lancer.work(task, complist, number);
 
                 }
                 tasklist.remove(task);

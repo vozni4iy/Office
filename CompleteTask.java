@@ -3,6 +3,7 @@
  */
 public class CompleteTask extends Task {
 
+    private int num;
     private int type;
     private int hours;
     private int priority;
@@ -11,18 +12,23 @@ public class CompleteTask extends Task {
     private int payment;
 
 
-    public CompleteTask (Task task, Person person, boolean is_dayoff)
+    public CompleteTask (Task task, Person person, int num)
     {
         super(person.getId(), task.getHours(), task.getPriority(), task.getValue());
         Task.number--;
+        boolean is_dayoff;
         this.type = task.getType();
         this.hours = task.getHours();
         this.priority = task.getPriority();
         this.value = task.getValue();
         this.id = person.getId();
+        int i = num % 7;
+        WeekDays day = WeekDays.values()[i];
+        is_dayoff = day.is_dayoff();
         int mult = 1;
         if (is_dayoff) mult = 2;
         this.payment = mult*hours*TaskNames.values()[task.getType()-1].getPayment();
+        this.num = num;
     }
 
     @Override
@@ -56,7 +62,8 @@ public class CompleteTask extends Task {
     @Override
     public String toString() {
         return "CompleteTask{" +
-                "type=" + type +
+                "num=" + num +
+                ", type=" + type +
                 ", hours=" + hours +
                 ", priority=" + priority +
                 ", value=" + value +
