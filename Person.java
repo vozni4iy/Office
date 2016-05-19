@@ -1,6 +1,8 @@
 /**
  * Created by Admin on 14.05.2016.
  */
+import java.util.*;
+
 public class Person {
 
     private int id;
@@ -13,6 +15,8 @@ public class Person {
     private boolean is_cleaner;
     private boolean is_busy;
     private boolean [][] schedule;
+    private Task curTask = null;
+    private int status = 0;
 
     public Person()
     {
@@ -117,6 +121,14 @@ public class Person {
         return is_busy;
     }
 
+    public Task getCurTask() {
+        return curTask;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
     private boolean[][] createSchedule()
     {
         boolean flag = true;
@@ -184,5 +196,23 @@ public class Person {
     {
         System.out.println("Сотрудник № " + id +" приступил к задаче № " + task.getNum() + " ," +
         TaskNames.values()[task.getType()-1].getName());
+        curTask = task;
+        status = task.getHours() - 1;
+    }
+
+    public void continueWorking(Task task)
+    {
+        System.out.println("Сотрудник № " + id +" продолжает выполнение задачи № " + task.getNum() + " ," +
+        TaskNames.values()[task.getType()-1].getName());
+        status = status - 1;
+    }
+
+    public void endWork(Task task, List <CompleteTask> clist, boolean is_dayoff)
+    {
+        System.out.println("Сотрудник № " + id +" выполнил задачу № " + task.getNum() + " ," +
+                TaskNames.values()[task.getType()-1].getName());
+        clist.add(new CompleteTask(task, this, is_dayoff));
+        this.curTask = null;
+        this.is_busy = false;
     }
 }

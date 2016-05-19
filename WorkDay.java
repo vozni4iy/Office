@@ -19,6 +19,7 @@ public class WorkDay {
     private static List<Programmer> proglist = office.getProglist();
     private static List<Tester> testlist = office.getTestlist();
     private static List <Task> tasklist = new ArrayList<>();
+    private static List <CompleteTask> complist = new ArrayList<>();
 
     public WorkDay (int number)
     {
@@ -68,60 +69,31 @@ public class WorkDay {
             }
         }
 
-        /*for (Accountant accountant : acclist)
+        System.out.println();
+        for (Task task : tasklist)
         {
-            if (accountant.getSchedule()[0][0])
+            System.out.println(task);
+        }
+        System.out.println();
+
+        for (Person person : staff)
+        {
+            if ((person.getCurTask() != null) && (person.getSchedule()[0][0]))
             {
-               Task task = chooseTask(1, tasklist);
-               accountant.makeReport(task);
-               staff.get(accountant.getId() - 1).setIs_busy(true);
+                if (person.getStatus() == 0)
+                {
+                    person.endWork(person.getCurTask(), complist, is_dayoff);
+                } else
+                {
+                    person.continueWorking(person.getCurTask());
+                }
             }
         }
-
-        for (Cleaner cleaner : clelist)
+        System.out.println();
+        for (CompleteTask ctask : complist)
         {
-            if (cleaner.getSchedule()[0][0])
-            {
-                Task task = chooseTask(2, tasklist);
-                cleaner.cleanOffice(task);
-            }
+            System.out.println(ctask);
         }
-
-        for (Designer designer : deslist)
-        {
-            if (designer.getSchedule()[0][0])
-            {
-                Task task = chooseTask(3, tasklist);
-                designer.drawLayout(task);
-            }
-        }
-
-        for (Manager manager : manlist)
-        {
-            if (manager.getSchedule()[0][0])
-            {
-                Task task = chooseTask(4, tasklist);
-                manager.sellProduct(task);
-            }
-        }
-
-        for (Programmer programmer : proglist)
-        {
-            if (programmer.getSchedule()[0][0])
-            {
-                Task task = chooseTask(1, tasklist);
-                programmer.writeCode(task);
-            }
-        }
-
-        for (Tester tester : testlist)
-        {
-            if (tester.getSchedule()[0][0])
-            {
-                Task task = chooseTask(1, tasklist);
-                tester.testProgramm(task);
-            }
-        }*/
     }
 
     private void getData()

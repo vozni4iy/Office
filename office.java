@@ -19,7 +19,8 @@ public class office {
     {
         System.out.println("Office");
         int quan;
-        quan = (int) (Math.random() * 91) + 10;
+        //quan = (int) (Math.random() * 91) + 10;
+        quan = (int) (Math.random() * 11) + 10;
         System.out.println("Количество сотрудников: " + quan);
         basicInit();
         staff = createRndStaff(staff, quan, 5);

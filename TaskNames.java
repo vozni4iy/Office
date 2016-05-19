@@ -2,16 +2,22 @@
  * Created by Admin on 19.05.2016.
  */
 public enum TaskNames {
-    ACCOUNTING ("составляю отчетность"), CLEANING("выполняю уборку в офисе"), DESIGNING ("рисую макет"),
-    MANAGING ("продаю услуги"), PROGRAMMING ("пишу код"), TESTING ("тестирую программу");
+    ACCOUNTING ("составить отчетность", 200), CLEANING("выполнить уборку в офисе", 30), DESIGNING ("рисовать макет", 200),
+    MANAGING ("продавать услуги", 150), PROGRAMMING ("писать код", 300), TESTING ("тестировать программу", 120);
 
     private String name;
+    private int payment;
 
-    TaskNames(String name) {
+    TaskNames(String name, int payment) {
         this.name = name;
+        this.payment = payment;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getPayment() {
+        return payment;
     }
 }
