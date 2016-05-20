@@ -14,7 +14,7 @@ public class Report {
 
     public void make()
     {
-        List <Person> staff = office.getStaff();
+        List <Person> staff = Office.getStaff();
         List <Freelancer> freelist = WorkDay.getFreelist();
         File file = new File("report.txt");
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file)))
@@ -32,7 +32,7 @@ public class Report {
             bw.newLine();
             bw.write("Оплата фрилансерам: " + freelancerPayment(freelist));
             bw.newLine();
-            bw.write("Постоянные издержки: " + office.getFixedCosts());
+            bw.write("Постоянные издержки: " + Office.getFixedCosts());
             bw.newLine();
             bw.write("Общий баланс: " + totalBalance(staff, freelist));
             bw.newLine();
@@ -47,6 +47,34 @@ public class Report {
                 bw.newLine();
             }
             bw.newLine();
+            bw.write("Подробный отчет о каждом сотруднике ");
+            bw.newLine();
+            bw.write("\r\n");
+            for (Person person : staff)
+            {
+                bw.write(person.toString());
+                bw.newLine();
+                bw.write("Общая стоимость выполенных заданий: " + personValue(person.getId()));
+                bw.newLine();
+                bw.write("Почасовая оплата за месяц: " + personHour(person.getId()));
+                bw.newLine();
+                bw.write("Фиксированная оплата за месяц: " + fixPerson(person));
+                bw.newLine();
+                bw.write("Баланс: " + personBalance(person));
+                bw.newLine();
+                bw.write("Задачи, выполенные сотрудником №" + person.getId() + " за месяц: ");
+                bw.newLine();
+                bw.write("\r\n");
+                for (CompleteTask ctask : completeTaskList)
+                {
+                    if (ctask.getId() == person.getId()) {
+                        bw.write(ctask.toString());
+                        bw.newLine();
+                    }
+                }
+                bw.write("\r\n");
+            }
+            bw.write("\r\n");
             bw.write("Общий список выполенных заданий за месяц: ");
             bw.newLine();
             bw.write("\r\n");
@@ -109,7 +137,49 @@ public class Report {
     private int totalBalance (List <Person> staff, List <Freelancer> freelist)
     {
         int total = totalIncome() - hourPayments() - salary(staff)
-                - freelancerPayment(freelist) - office.getFixedCosts();
+                - freelancerPayment(freelist) - Office.getFixedCosts();
         return total;
     }
+
+    private int personValue (int id)
+    {
+        int total = 0;
+        for (CompleteTask ctask : completeTaskList)
+        {
+            if (ctask.getId() == id)
+                total += ctask.getValue();
+        }
+        return total;
+    }
+
+    private int personHour (int id)
+    {
+        int total = 0;
+        for (CompleteTask ctask : completeTaskList)
+        {
+            if (ctask.getId() == id)
+                total += ctask.getPayment();
+        }
+        return total;
+    }
+
+    private int fixPerson (Person person)
+    {
+        int total = 0;
+
+            if (person.is_director()) total += Salary.DIRECTOR.getSalary();
+            if (person.is_accountant()) total += Salary.ACCOUNTANT.getSalary();
+            if (person.is_manager()) total += Salary.MANAGER.getSalary();
+            // можно добавить еще строки, если у других профессий появится фиксированная ставка
+
+        return total;
+    }
+
+    private int personBalance(Person person)
+    {
+        int total = personValue(person.getId()) - personHour(person.getId()) - fixPerson(person);
+        return total;
+    }
+
+
 }

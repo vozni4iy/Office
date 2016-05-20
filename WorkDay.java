@@ -10,14 +10,14 @@ public class WorkDay {
     private String name, dayoff;
     private boolean is_dayoff;
 
-    private static List<Person> staff = office.getStaff();
-    private static List<Director> dirlist = office.getDirlist();
-    private static List<Accountant> acclist = office.getAcclist();
-    private static List<Cleaner> clelist = office.getClelist();
-    private static List<Designer> deslist = office.getDeslist();
-    private static List<Manager> manlist = office.getManlist();
-    private static List<Programmer> proglist = office.getProglist();
-    private static List<Tester> testlist = office.getTestlist();
+    private static List<Person> staff = Office.getStaff();
+    private static List<Director> dirlist = Office.getDirlist();
+    private static List<Accountant> acclist = Office.getAcclist();
+    private static List<Cleaner> clelist = Office.getClelist();
+    private static List<Designer> deslist = Office.getDeslist();
+    private static List<Manager> manlist = Office.getManlist();
+    private static List<Programmer> proglist = Office.getProglist();
+    private static List<Tester> testlist = Office.getTestlist();
     private static List <Task> tasklist = new ArrayList<>();
     private static List <CompleteTask> completeList = new ArrayList<>();
     private static List <Freelancer> freelist = new ArrayList<>();

@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by Admin on 13.05.2016.
  */
-public class office {
+public class Office {
 
     private static List<Person> staff = new ArrayList<Person>();
     private static List<Director> dirlist = new ArrayList<>();

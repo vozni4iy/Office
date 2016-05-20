@@ -9,7 +9,7 @@ public class Manager extends Person{
     public Manager (int id)
     {
         this.id = id;
-        this.schedule = office.getStaff().get(id - 1).getSchedule();
+        this.schedule = Office.getStaff().get(id - 1).getSchedule();
     }
 
     public int getId ()
