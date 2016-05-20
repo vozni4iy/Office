@@ -21,6 +21,7 @@ public class WorkDay {
     private static List <Task> tasklist = new ArrayList<>();
     private static List <CompleteTask> completeList = new ArrayList<>();
     private static List <Freelancer> freelist = new ArrayList<>();
+    private static int weekPayment = 0;
     private List <CompleteTask> complist;
 
     public WorkDay (int number)
@@ -185,6 +186,14 @@ public class WorkDay {
             System.out.println(ctask);
         }
         completeList.addAll(complist);
+        int fp = freelancerPayment(complist);
+        System.out.println("Выплачено фрилансерам: " + fp);
+        if ((w == 6) || (number == 31))
+        {
+            System.out.println("Выплачено сотрудникам: " + weekPayment);
+            // фиксированная ставка выплачивается в конце месяца. так гораздо удобнее
+            weekPayment = 0;
+        }
         tasklist = new ArrayList<>(); //офис и так убирают каждый день
         System.out.println();
     }
@@ -238,6 +247,22 @@ public class WorkDay {
         if (person.is_programmer() && (type == 5)) res = true;
         if (person.is_tester() && (type == 6)) res = true;
         return res;
+    }
+
+    private int freelancerPayment(List <CompleteTask> clist)
+    {
+       int total = 0;
+       for (CompleteTask ctask : clist)
+       {
+           if  (ctask.getId() > 200)
+           {
+               total += ctask.getPayment();
+           } else
+           {
+               weekPayment += ctask.getPayment();
+           }
+       }
+       return total;
     }
 
     public static List<Freelancer> getFreelist() {
