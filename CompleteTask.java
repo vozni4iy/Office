@@ -61,14 +61,10 @@ public class CompleteTask extends Task {
 
     @Override
     public String toString() {
-        return "CompleteTask{" +
-                "num=" + num +
-                ", type=" + type +
-                ", hours=" + hours +
-                ", priority=" + priority +
-                ", value=" + value +
-                ", id=" + id +
-                ", payment=" + payment +
-                '}';
+        String workType = TaskNames.values()[type -1].getName();
+        String s = String.format("Дата:%2d марта;    вид работы:%24s;    рабочих часов:%1d;    " +
+                "приоритет:%2d;    стоимость:%4d;    id сотрудника: %3d;    оплата:%3d ", num, workType, hours,
+                priority, value, id, payment);
+        return s;
     }
 }

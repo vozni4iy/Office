@@ -8,6 +8,7 @@ public enum TaskNames {
     private String name;
     private int payment;
 
+
     TaskNames(String name, int payment) {
         this.name = name;
         this.payment = payment;

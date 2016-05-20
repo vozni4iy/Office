@@ -73,7 +73,7 @@ public class WorkDay {
                 tasklist.add(weekTask);
             }
 
-            if (number == 31)
+            if ((h == 0) && (number == 31))
             {
                 // ежемесячный отчет
                 Task mTask = new Task(1, 2, 10, 1000);

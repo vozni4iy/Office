@@ -15,11 +15,7 @@ public class office {
     private static List<Programmer> proglist = new ArrayList<>();
     private static List<Tester> testlist = new ArrayList<>();
 
-    private static final int DIR_SALARY = 10000;
-    private static final int ACC_SALARY = 4000;
-    private static final int MAN_SALARY = 2000;
-
-    public static void main (String [] args)
+      public static void main (String [] args)
     {
         System.out.println("Office");
         int quan;
@@ -41,6 +37,8 @@ public class office {
         List <CompleteTask> clist = WorkDay.getCompleteList();
 
         System.out.println("Всего выполнено заданий за месяц: " + clist.size());
+        Report report = new Report(clist);
+        report.make();
     }
 
     public static void basicInit()
