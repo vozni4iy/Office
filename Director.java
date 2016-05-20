@@ -7,12 +7,12 @@ public class Director extends Person{
 
     private int id;
     private boolean[][] schedule;
-    private static final int ACCVALUE = 500;
-    private static final int CLEVALUE = 100;
+    private static final int ACCVALUE = 700;
+    private static final int CLEVALUE = 150;
     private static final int DESVALUE = 600;
-    private static final int MANVALUE = 400;
+    private static final int MANVALUE = 600;
     private static final int PROGVALUE = 800;
-    private static final int TESTVALUE = 300;
+    private static final int TESTVALUE = 500;
 
     public Director (int id)
     {

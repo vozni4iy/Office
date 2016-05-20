@@ -215,4 +215,19 @@ public class Person {
         this.curTask = null;
         this.is_busy = false;
     }
+
+    @Override
+    public String toString() {
+        String s = "", prof = "";
+        if (this.is_director) prof = prof + "директор ";
+        if (this.is_accountant()) prof = prof + "бухгалтер ";
+        if (this.is_cleaner()) prof = prof + "уборщик ";
+        if (this.is_designer()) prof = prof + "дизайнер ";
+        if (this.is_manager()) prof = prof + "менеджер ";
+        if (this.is_programmer()) prof = prof + "программист ";
+        if (this.is_tester()) prof = prof + "тестировщик ";
+        s = String.format("Сотрудник №%3d, профессии: %-40s", id, prof);
+
+        return s;
+    }
 }

@@ -15,6 +15,8 @@ public class office {
     private static List<Programmer> proglist = new ArrayList<>();
     private static List<Tester> testlist = new ArrayList<>();
 
+    private static final int FIXED_COSTS = 50000;
+
       public static void main (String [] args)
     {
         System.out.println("Office");
@@ -293,5 +295,9 @@ public class office {
 
     public static List<Person> getStaff() {
         return staff;
+    }
+
+    public static int getFixedCosts() {
+        return FIXED_COSTS;
     }
 }
