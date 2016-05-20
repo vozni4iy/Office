@@ -47,6 +47,11 @@ public class Report {
                 bw.newLine();
             }
             bw.newLine();
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
             bw.write("Подробный отчет о каждом сотруднике ");
             bw.newLine();
             bw.write("\r\n");
@@ -74,6 +79,65 @@ public class Report {
                 }
                 bw.write("\r\n");
             }
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("Общий список фрилансеров: ");
+            bw.newLine();
+            bw.write("\r\n");
+            for (Freelancer lancer : freelist)
+            {
+                bw.write(lancer.toString());
+                bw.newLine();
+            }
+            bw.newLine();
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("Подробный отчет о каждом фрилансере ");
+            bw.newLine();
+            bw.write("\r\n");
+            for (Freelancer lancer : freelist)
+            {
+                bw.write(lancer.toString());
+                bw.newLine();
+                bw.write("Общая стоимость выполенных заданий: " + personValue(lancer.getId()));
+                bw.newLine();
+                bw.write("Оплата за месяц: " + personHour(lancer.getId()));
+                bw.newLine();
+                int bal = personValue(lancer.getId()) - personHour(lancer.getId());
+                bw.write("Баланс: " + bal);
+                bw.newLine();
+                bw.write("Задачи, выполенные сотрудником №" + lancer.getId() + " за месяц: ");
+                bw.newLine();
+                bw.write("\r\n");
+                for (CompleteTask ctask : completeTaskList)
+                {
+                    if (ctask.getId() == lancer.getId()) {
+                        bw.write(ctask.toString());
+                        bw.newLine();
+                    }
+                }
+                bw.write("\r\n");
+            }
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
+            bw.write("\r\n");
             bw.write("\r\n");
             bw.write("Общий список выполенных заданий за месяц: ");
             bw.newLine();

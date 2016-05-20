@@ -79,10 +79,9 @@ public class Freelancer extends Person {
 
     @Override
     public String toString() {
-        return "Freelancer{" +
-                "id=" + id +
-                ", prof=" + prof +
-                ", is_busy=" + is_busy +
-                '}';
+
+        String s = String.format("Фрилансер №%4d, профессия: %-20s", id, strProf());
+
+        return s;
     }
 }
